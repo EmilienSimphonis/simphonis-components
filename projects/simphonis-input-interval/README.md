@@ -1,24 +1,25 @@
 # SimphonisInputInterval
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.
+Cette librairie met à disposition un input de type interval.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project simphonis-input-interval` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project simphonis-input-interval`.
-> Note: Don't forget to add `--project simphonis-input-interval` or else it will be added to the default project in your `angular.json` file. 
+Pour installer ce composant, il suffit de lancer `npm install simphonis-input-interval --save`.
 
-## Build
+## Intégration
 
-Run `ng build simphonis-input-interval` to build the project. The build artifacts will be stored in the `dist/` directory.
+Afin de l'intégrer, ajoutez l'importation dans le module du composant où vous souhaitez l'intégrer, puis insérez dans le html le composant `<simphonis-input-interval></simphonis-input-interval>`. 
 
-## Publishing
+Les props à passer au composant sont : 
+- `min` : La valeur minimum de l'interval
+- `max` : La valeur maximum de l'interval
+- `unite` : L'unité des valeurs (€, $, cm, etc.)
+- `onIntervalChange` : Le callback appelé lorsque un des curseurs de l'interval est modifié
 
-After building your library with `ng build simphonis-input-interval`, go to the dist folder `cd dist/simphonis-input-interval` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test simphonis-input-interval` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+L'objet retourné lors de l'appel au callback est le suivant : 
+```
+{
+    min: number,
+    max: number
+}
+```
