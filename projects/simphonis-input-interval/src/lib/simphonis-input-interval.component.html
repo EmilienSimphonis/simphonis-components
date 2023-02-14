@@ -1,7 +1,7 @@
 <div class="slider-wrapper">
     <div class="slider-container">
-        <div class="slider-track"></div>
-        <input type="range" [min]="min" [max]="max" [step]="step" [value]="min" id="slider-1" (input)="slideOne()">
-        <input type="range" [min]="min" [max]="max" [step]="step" [value]="max" id="slider-2" (input)="slideTwo()">
+        <div class="slider-track" #sliderTrack></div>
+        <input type="range" [min]="min" [max]="max" [step]="step" [value]="min" #sliderOne (input)="slideOne()">
+        <input type="range" [min]="min" [max]="max" [step]="step" [value]="max" #sliderTwo (input)="slideTwo()">
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'simphonis-input-interval',
@@ -36,44 +36,54 @@ export class SimphonisInputIntervalComponent implements OnInit {
    */
   @Output() onIntervalChange: EventEmitter<any> = new EventEmitter();
 
+  @ViewChild("sliderTrack", { read: ElementRef, static: true })
+  sliderTrackRef!: ElementRef;
+  @ViewChild("sliderOne", { read: ElementRef, static: true })
+  sliderOneRef!: ElementRef;
+  @ViewChild("sliderTwo", { read: ElementRef, static: true })
+  sliderTwoRef!: ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.sliderOneRef.nativeElement.value = this.min;
+    this.sliderTwoRef.nativeElement.value = this.max;
     this.fillColor();
   }
   
+  /**
+   * Modification du curseur min
+   */
   slideOne(): void {
-    let sliderOne = document.getElementById("slider-1") as HTMLInputElement;
-    let sliderTwo = document.getElementById("slider-2") as HTMLInputElement;
-
-    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= 0){
-      sliderOne.value = sliderTwo.value;
+    if(parseInt(this.sliderTwoRef.nativeElement.value) - parseInt(this.sliderOneRef.nativeElement.value) <= 0){
+      this.sliderOneRef.nativeElement.value = this.sliderTwoRef.nativeElement.value;
     }
 
     this.fillColor();
   }
   
+  /**
+   * Modification du curseur max
+   */
   slideTwo(): void {
-    let sliderOne = document.getElementById("slider-1") as HTMLInputElement;
-    let sliderTwo = document.getElementById("slider-2") as HTMLInputElement;
-
-    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= 0){
-      sliderTwo.value = sliderOne.value;
+    if(parseInt(this.sliderTwoRef.nativeElement.value) - parseInt(this.sliderOneRef.nativeElement.value) <= 0){
+      this.sliderTwoRef.nativeElement.value = this.sliderOneRef.nativeElement.value;
     }
 
     this.fillColor();
   }
 
+  /**
+   * Remplissage du slider + déclenchement du callback
+   */
   fillColor(): void {
-    let sliderOne = document.getElementById("slider-1") as HTMLInputElement;
-    let sliderTwo = document.getElementById("slider-2") as HTMLInputElement;
-    let sliderTrack = document.querySelector(".slider-track") as HTMLElement;
     
-    this.onIntervalChange.emit({min:parseInt(sliderOne.value), max: parseInt(sliderTwo.value)});
+    this.onIntervalChange.emit({min:this.sliderOneRef.nativeElement.value, max: this.sliderTwoRef.nativeElement.value});
     
-    let percent1 = ((parseInt(sliderOne.value) - this.min) / (this.max - this.min)) * 100;
-    let percent2 = ((parseInt(sliderTwo.value) - this.min) / (this.max - this.min)) * 100;
-    sliderTrack.style.background = `linear-gradient(to right, ${this.primaryColor} ${percent1}% , ${this.secondaryColor} ${percent1}% , ${this.secondaryColor} ${percent2}%, ${this.primaryColor} ${percent2}%)`;
+    let percent1 = ((this.sliderOneRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
+    let percent2 = ((this.sliderTwoRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
+
+    this.sliderTrackRef.nativeElement.style.background = `linear-gradient(to right, ${this.primaryColor} ${percent1}% , ${this.secondaryColor} ${percent1}% , ${this.secondaryColor} ${percent2}%, ${this.primaryColor} ${percent2}%)`;
   }
   
 

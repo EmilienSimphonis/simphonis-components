@@ -1,4 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { SimphonisInputIntervalComponent } from './simphonis-input-interval.component';
 
 @NgModule({
@@ -6,6 +7,7 @@ import { SimphonisInputIntervalComponent } from './simphonis-input-interval.comp
     SimphonisInputIntervalComponent
   ],
   imports: [
+    FormsModule
   ],
   exports: [
     SimphonisInputIntervalComponent
