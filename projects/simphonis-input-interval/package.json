@@ -1,6 +1,6 @@
 {
   "name": "simphonis-input-interval",
-  "version": "0.0.7",
+  "version": "0.0.13",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0"
@@ -8,7 +8,7 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.",
+  "description": "Cette librairie met à disposition un input de type interval.",
   "main": "karma.conf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

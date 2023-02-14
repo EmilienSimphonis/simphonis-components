@@ -17,9 +17,19 @@ export class SimphonisInputIntervalComponent implements OnInit {
   @Input() max: number = 0;
 
   /**
-   * Unité de l'interval
+   * Saut de valeur
    */
-  @Input() unite: string = '';
+  @Input() step: number = 1;
+
+  /**
+   * Couleur principale
+   */
+  @Input() primaryColor: string = '#000000';
+
+  /**
+   * Couleur secondaire
+   */
+  @Input() secondaryColor: string = '#FFFFFF';
 
   /**
    * Evènement de changement de l'interval
@@ -35,24 +45,22 @@ export class SimphonisInputIntervalComponent implements OnInit {
   slideOne(): void {
     let sliderOne = document.getElementById("slider-1") as HTMLInputElement;
     let sliderTwo = document.getElementById("slider-2") as HTMLInputElement;
-    let displayValOne = document.getElementById("range1") as HTMLInputElement;
 
     if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= 0){
       sliderOne.value = sliderTwo.value;
     }
-    displayValOne.textContent = sliderOne.value;
+
     this.fillColor();
   }
   
   slideTwo(): void {
     let sliderOne = document.getElementById("slider-1") as HTMLInputElement;
     let sliderTwo = document.getElementById("slider-2") as HTMLInputElement;
-    let displayValTwo = document.getElementById("range2") as HTMLInputElement;
 
     if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= 0){
       sliderTwo.value = sliderOne.value;
     }
-    displayValTwo.textContent = sliderTwo.value;
+
     this.fillColor();
   }
 
@@ -63,9 +71,9 @@ export class SimphonisInputIntervalComponent implements OnInit {
     
     this.onIntervalChange.emit({min:parseInt(sliderOne.value), max: parseInt(sliderTwo.value)});
     
-    let percent1 = (parseInt(sliderOne.value) / this.min) * 100;
-    let percent2 = (parseInt(sliderTwo.value) / this.max) * 100;
-    sliderTrack.style.background = `linear-gradient(to right, white ${percent1}% , var(--primary) ${percent1}% , var(--primary) ${percent2}%, white ${percent2}%)`;
+    let percent1 = ((parseInt(sliderOne.value) - this.min) / (this.max - this.min)) * 100;
+    let percent2 = ((parseInt(sliderTwo.value) - this.min) / (this.max - this.min)) * 100;
+    sliderTrack.style.background = `linear-gradient(to right, ${this.primaryColor} ${percent1}% , ${this.secondaryColor} ${percent1}% , ${this.secondaryColor} ${percent2}%, ${this.primaryColor} ${percent2}%)`;
   }
   
 

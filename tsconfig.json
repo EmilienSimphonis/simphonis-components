@@ -14,6 +14,12 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "paths": {
+      "simphonis-input-interval": [
+        "dist/simphonis-input-interval/simphonis-input-interval",
+        "dist/simphonis-input-interval"
+      ]
+    },
     "target": "es2017",
     "module": "es2020",
     "lib": [

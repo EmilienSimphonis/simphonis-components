@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "simphonis-input-interval": {
+      "projectType": "library",
+      "root": "projects/simphonis-input-interval",
+      "sourceRoot": "projects/simphonis-input-interval/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/simphonis-input-interval/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/simphonis-input-interval/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/simphonis-input-interval/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/simphonis-input-interval/src/test.ts",
+            "tsConfig": "projects/simphonis-input-interval/tsconfig.spec.json",
+            "karmaConfig": "projects/simphonis-input-interval/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "simphonis-input-interval"
 }

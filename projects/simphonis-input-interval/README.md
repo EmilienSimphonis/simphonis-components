@@ -13,8 +13,10 @@ Afin de l'intégrer, ajoutez l'importation dans le module du composant où vous 
 Les props à passer au composant sont : 
 - `min` : La valeur minimum de l'interval
 - `max` : La valeur maximum de l'interval
-- `unite` : L'unité des valeurs (€, $, cm, etc.)
 - `onIntervalChange` : Le callback appelé lorsque un des curseurs de l'interval est modifié
+- `step` : Etape de saut de valeur
+- `primaryColor` : Couleur principale
+- `secondaryColor` : Couleur secondaire
 
 L'objet retourné lors de l'appel au callback est le suivant : 
 ```
