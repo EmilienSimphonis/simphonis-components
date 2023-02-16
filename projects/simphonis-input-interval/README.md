@@ -14,11 +14,11 @@ Pour installer ce composant, il suffit de lancer `npm install simphonis-input-in
 Afin de l'intégrer, ajoutez l'importation dans le module du composant où vous souhaitez l'intégrer, puis insérez dans le html le composant `<simphonis-input-interval></simphonis-input-interval>`. 
 
 Les props à passer au composant sont : 
-- `min` : La valeur minimum de l'intervale
-- `max` : La valeur maximum de l'intervale
-- `step` : Etape de saut de valeur
 - `isRangeStepValues` : Si les valeurs de l'intervale sont comprises dans un tableau
-- `stepValues` : Tableau de valeurs (nombres) pour l'intervale
+- `min` : La valeur minimum de l'intervale (si isRangeStepValues est false)
+- `max` : La valeur maximum de l'intervale (si isRangeStepValues est false)
+- `step` : Etape de saut de valeur (si isRangeStepValues est false)
+- `stepValues` : Tableau de valeurs (nombres) pour l'intervale (si isRangeStepValues est true)
 - `primaryColor` : Couleur principale
 - `secondaryColor` : Couleur secondaire
 - `onIntervalChange` : Le callback appelé lorsque un des curseurs de l'intervale est modifié
