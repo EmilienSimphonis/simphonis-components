@@ -56,13 +56,23 @@ export class SimphonisInputIntervalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    // Initialisation et vérif des valeurs si isRangeStepValues est true
     if(this.isRangeStepValues){
       this.stepValues.sort((a,b) => a - b);
+      this.min = 0;
       this.max = this.stepValues.length - 1;
+      this.step = 1;
     }
-
+    
+    this.sliderOneRef.nativeElement.max = this.max;
+    this.sliderOneRef.nativeElement.min = this.min;
     this.sliderOneRef.nativeElement.value = this.min;
+    
+    this.sliderTwoRef.nativeElement.max = this.max;
+    this.sliderTwoRef.nativeElement.min = this.min;
     this.sliderTwoRef.nativeElement.value = this.max;
+
     this.fillColor();
   }
   
