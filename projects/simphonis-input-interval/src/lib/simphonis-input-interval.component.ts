@@ -17,9 +17,19 @@ export class SimphonisInputIntervalComponent implements OnInit {
   @Input() max: number = 0;
 
   /**
+   * Si les étapes de l'interval sont un tableau de valeurs
+   */
+  @Input() isRangeStepValues: boolean = false;
+
+  /**
    * Saut de valeur
    */
   @Input() step: number = 1;
+
+  /**
+   * Valeurs numériques correspondant aux étapes
+   */
+  @Input() stepValues: number[] = [];
 
   /**
    * Couleur principale
@@ -46,6 +56,11 @@ export class SimphonisInputIntervalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(this.isRangeStepValues){
+      this.stepValues.sort((a,b) => a - b);
+      this.max = this.stepValues.length - 1;
+    }
+
     this.sliderOneRef.nativeElement.value = this.min;
     this.sliderTwoRef.nativeElement.value = this.max;
     this.fillColor();
@@ -77,8 +92,11 @@ export class SimphonisInputIntervalComponent implements OnInit {
    * Remplissage du slider + déclenchement du callback
    */
   fillColor(): void {
-    
-    this.onIntervalChange.emit({min:this.sliderOneRef.nativeElement.value, max: this.sliderTwoRef.nativeElement.value});
+    if(this.isRangeStepValues){
+      this.onIntervalChange.emit({min: this.stepValues[this.sliderOneRef.nativeElement.value], max: this.stepValues[this.sliderTwoRef.nativeElement.value]});
+    } else {
+      this.onIntervalChange.emit({min:this.sliderOneRef.nativeElement.value, max: this.sliderTwoRef.nativeElement.value});
+    }
     
     let percent1 = ((this.sliderOneRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
     let percent2 = ((this.sliderTwoRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
