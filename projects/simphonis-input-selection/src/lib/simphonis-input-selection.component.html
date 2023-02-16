@@ -1,0 +1,7 @@
+<div class="selector-list">
+    <div class="selector-card" [ngClass]="{'simple': !isSelectionMultiple, 'multiple': isSelectionMultiple, 'selected': selectedItem?.id === item.id || selectedItems.includes(item), 'disabled': item.disabled, 'selector-card-image': hasSelectorImage && item.imageUrl}" *ngFor="let item of list" (click)="selectItem(item)">
+        <img [src]="item.iconUrl" *ngIf="hasSelectorIcon && item.iconUrl" class="selector-icon"/>
+        <img [src]="item.imageUrl" *ngIf="hasSelectorImage && item.imageUrl" class="selector-image" (click)="zoomIn(item)"/>
+        <p class="selector-text">{{item.description}}</p>
+    </div>
+</div>

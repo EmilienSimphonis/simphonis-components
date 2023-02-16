@@ -18,6 +18,10 @@
       "simphonis-input-interval": [
         "dist/simphonis-input-interval/simphonis-input-interval",
         "dist/simphonis-input-interval"
+      ],
+      "simphonis-input-selection": [
+        "dist/simphonis-input-selection/simphonis-input-selection",
+        "dist/simphonis-input-selection"
       ]
     },
     "target": "es2017",

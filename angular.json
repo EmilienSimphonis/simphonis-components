@@ -33,6 +33,37 @@
           }
         }
       }
+    },
+    "simphonis-input-selection": {
+      "projectType": "library",
+      "root": "projects/simphonis-input-selection",
+      "sourceRoot": "projects/simphonis-input-selection/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/simphonis-input-selection/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/simphonis-input-selection/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/simphonis-input-selection/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/simphonis-input-selection/src/test.ts",
+            "tsConfig": "projects/simphonis-input-selection/tsconfig.spec.json",
+            "karmaConfig": "projects/simphonis-input-selection/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "simphonis-input-interval"
