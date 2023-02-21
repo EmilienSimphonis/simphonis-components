@@ -14,17 +14,19 @@ Pour installer ce composant, il suffit de lancer `npm install simphonis-input-in
 Afin de l'intégrer, ajoutez l'importation dans le module du composant où vous souhaitez l'intégrer, puis insérez dans le html le composant `<simphonis-input-interval></simphonis-input-interval>`. 
 
 Les props à passer au composant sont : 
-- `isRangeStepValues` : Si les valeurs de l'intervale sont comprises dans un tableau
-- `min` : La valeur minimum de l'intervale (si isRangeStepValues est false)
-- `max` : La valeur maximum de l'intervale (si isRangeStepValues est false)
-- `step` : Etape de saut de valeur (si isRangeStepValues est false)
-- `stepValues` : Tableau de valeurs (nombres) pour l'intervale (si isRangeStepValues est true)
-- `primaryColor` : Couleur principale
-- `secondaryColor` : Couleur secondaire
-- `onIntervalChange` : Le callback appelé lorsque un des curseurs de l'intervale est modifié
+| Nom | Type | Description | Défaut |
+| --- | --- | --- | --- |
+| min | number | Valeur minimum de l'intervale | 0 |
+| max | number | Valeur maximum de l'intervale | 0 |
+| isRangeStepValues | boolean | Si les étapes de l'interval sont un tableau de valeurs | false |
+| step | number | Etape de saut de valeur (si isRangeStepValues est false) | 1 |
+| stepValues | number[] | Tableau de valeurs (nombres) pour l'intervale (si isRangeStepValues est true) | [] |
+| primaryColor | string | Couleur principale | '#000000' |
+| secondaryColor | string | Couleur secondaire | '#FFFFFF' |
+| onIntervalChange | function | Le callback appelé lorsque un des curseurs de l'intervale est modifié |  |
 
 L'objet retourné lors de l'appel au callback est le suivant : 
-```
+```json
 {
     min: number,
     max: number

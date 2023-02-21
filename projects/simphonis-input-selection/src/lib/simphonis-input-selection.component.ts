@@ -3,9 +3,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 type Item = {
   id: string;
   description: string;
+  selected?: boolean;
   disabled?: boolean;
   iconUrl ?: string;
   imageUrl ?: string;
+}
+
+enum ItemType {
+  BUTTON = "button",
+  CHECKBOX = "checkbox"
 }
 
 @Component({
@@ -26,6 +32,11 @@ export class SimphonisInputSelectionComponent implements OnInit {
   @Input() isSelectionMultiple: boolean = false;
 
   /**
+   * Si l'affichage des options est sous forme de checkbox ou bien de boutons
+   */
+  @Input() type: ItemType = ItemType.CHECKBOX;
+
+  /**
    * Si l'item a un icon
    */
   @Input() hasSelectorIcon: boolean = false;
@@ -34,6 +45,16 @@ export class SimphonisInputSelectionComponent implements OnInit {
    * Si l'item a une image
    */
   @Input() hasSelectorImage: boolean = false;
+
+  /**
+   * Nom du formulaire
+   */
+  @Input() name: string = 'radio';
+
+  /**
+   * Affichage des items en ligne
+   */
+  @Input() inline: boolean = true;
 
   /**
    * Item sélectionné
@@ -62,7 +83,7 @@ export class SimphonisInputSelectionComponent implements OnInit {
   selectItem(item: Item){
     if(!item.disabled){
       if(this.isSelectionMultiple){
-        if(this.selectedItems.find(i => i.id === item.id)){
+        if(this.selectedItems && this.selectedItems.find(i => i.id === item.id)){
           this.selectedItems.splice(this.selectedItems.findIndex(i => i.id === item.id), 1);
         } else {
           this.selectedItems.push(item);
@@ -73,6 +94,10 @@ export class SimphonisInputSelectionComponent implements OnInit {
         this.onSelectionChange.emit(this.selectedItem);
       }
     }
+  }
+
+  log(event: any){
+    console.log(event)
   }
 
   zoomIn(item: any){

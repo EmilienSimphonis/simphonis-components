@@ -1,24 +1,23 @@
-# SimphonisInputSelectio
+# Simphonis Input Interval
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+Cette librairie met à disposition une liste d'éléments à sélectionner pour Angular.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project simphonis-input-selection` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project simphonis-input-selection`.
-> Note: Don't forget to add `--project simphonis-input-selection` or else it will be added to the default project in your `angular.json` file. 
+Pour installer ce composant, il suffit de lancer `npm install simphonis-input-selection --save`.
 
-## Build
+## Intégration
 
-Run `ng build simphonis-input-selection` to build the project. The build artifacts will be stored in the `dist/` directory.
+Afin de l'intégrer, ajoutez l'importation dans le module du composant où vous souhaitez l'intégrer, puis insérez dans le html le composant `<simphonis-input-selection></simphonis-input-selection>`. 
 
-## Publishing
-
-After building your library with `ng build simphonis-input-selection`, go to the dist folder `cd dist/simphonis-input-selection` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test simphonis-input-selection` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Les props à passer au composant sont : 
+| Nom | Type | Description | Défaut |
+| --- | --- | --- | --- |
+| list | Item[] | Liste d'items | [] |
+| isSelectionMultiple | boolean | Si plusieurs items sont sélectionnables | false |
+| type | enum | Si l'affichage des options est sous forme de checkbox ou bouton ('checkbox' ou 'button') | 'checkbox' |
+| hasSelectorIcon | boolean | Si l'item a un icon | false |
+| hasSelectorImage | boolean | Si l'item a une image | false |
+| name | string | Nom du formulaire | 'radio' |
+| inline | boolean | Affichage des items en ligne | true |
+| onSelectionChange | function | Le callback appelé lorsqu'un des items est sélectionné ou non |  |

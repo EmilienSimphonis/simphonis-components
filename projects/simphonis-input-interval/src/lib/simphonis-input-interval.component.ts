@@ -102,16 +102,36 @@ export class SimphonisInputIntervalComponent implements OnInit {
    * Remplissage du slider + déclenchement du callback
    */
   fillColor(): void {
-    if(this.isRangeStepValues){
-      this.onIntervalChange.emit({min: this.stepValues[this.sliderOneRef.nativeElement.value], max: this.stepValues[this.sliderTwoRef.nativeElement.value]});
-    } else {
-      this.onIntervalChange.emit({min:this.sliderOneRef.nativeElement.value, max: this.sliderTwoRef.nativeElement.value});
-    }
+    this.onIntervalChange.emit({min: this.getMin(), max: this.getMax()});
     
     let percent1 = ((this.sliderOneRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
     let percent2 = ((this.sliderTwoRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
 
     this.sliderTrackRef.nativeElement.style.background = `linear-gradient(to right, ${this.primaryColor} ${percent1}% , ${this.secondaryColor} ${percent1}% , ${this.secondaryColor} ${percent2}%, ${this.primaryColor} ${percent2}%)`;
+  }
+
+  /**
+   * Détermination min
+   * @returns Min value
+   */
+  getMin(): number {
+    if(this.isRangeStepValues){
+      return this.stepValues[this.sliderOneRef.nativeElement.value];
+    } else {
+      return this.sliderOneRef.nativeElement.value;
+    }
+  }
+  
+  /**
+   * Détermination max
+   * @returns Max value
+   */
+  getMax(): number {
+    if(this.isRangeStepValues){
+      return this.stepValues[this.sliderTwoRef.nativeElement.value];
+    } else {
+      return this.sliderTwoRef.nativeElement.value;
+    }
   }
   
 

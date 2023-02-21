@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { SimphonisInputSelectionComponent } from './simphonis-input-selection.component';
 
@@ -9,7 +10,8 @@ import { SimphonisInputSelectionComponent } from './simphonis-input-selection.co
     SimphonisInputSelectionComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     SimphonisInputSelectionComponent
