@@ -85,6 +85,8 @@ export class SimphonisInputIntervalComponent implements OnInit {
     }
 
     this.fillColor();
+    
+    this.onIntervalChange.emit({min: this.getMin(), max: this.getMax()});
   }
   
   /**
@@ -96,14 +98,14 @@ export class SimphonisInputIntervalComponent implements OnInit {
     }
 
     this.fillColor();
+    
+    this.onIntervalChange.emit({min: this.getMin(), max: this.getMax()});
   }
 
   /**
    * Remplissage du slider + déclenchement du callback
    */
-  fillColor(): void {
-    this.onIntervalChange.emit({min: this.getMin(), max: this.getMax()});
-    
+  fillColor(): void {    
     let percent1 = ((this.sliderOneRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
     let percent2 = ((this.sliderTwoRef.nativeElement.value - this.min) / (this.max - this.min)) * 100;
 
