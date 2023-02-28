@@ -74,6 +74,15 @@ export class SimphonisInputSelectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.list.forEach(item => {
+      if(item.selected){
+        if(this.isSelectionMultiple){
+          this.selectedItems.push(item);
+        } else {
+          this.selectedItem = item;
+        } 
+      }
+    })
   }
 
   /**

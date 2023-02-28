@@ -42,6 +42,16 @@ export class SimphonisInputIntervalComponent implements OnInit {
   @Input() secondaryColor: string = '#FFFFFF';
 
   /**
+   * Minimum sélectionné
+   */
+  @Input() minSelected?: number;
+
+  /**
+   * Maximum sélectionné
+   */
+  @Input() maxSelected?: number;
+
+  /**
    * Evènement de changement de l'interval
    */
   @Output() onIntervalChange: EventEmitter<any> = new EventEmitter();
@@ -67,11 +77,27 @@ export class SimphonisInputIntervalComponent implements OnInit {
     
     this.sliderOneRef.nativeElement.max = this.max;
     this.sliderOneRef.nativeElement.min = this.min;
-    this.sliderOneRef.nativeElement.value = this.min;
+    if(this.minSelected){
+      if(this.isRangeStepValues){
+        this.sliderOneRef.nativeElement.value = this.stepValues.findIndex(v => v === this.minSelected);
+      } else {
+        this.sliderOneRef.nativeElement.value = this.minSelected;
+      }
+    } else {
+      this.sliderOneRef.nativeElement.value = this.min;
+    }
     
     this.sliderTwoRef.nativeElement.max = this.max;
     this.sliderTwoRef.nativeElement.min = this.min;
-    this.sliderTwoRef.nativeElement.value = this.max;
+    if(this.maxSelected){
+      if(this.isRangeStepValues){
+        this.sliderTwoRef.nativeElement.value = this.stepValues.findIndex(v => v === this.maxSelected);
+      } else {
+        this.sliderTwoRef.nativeElement.value = this.maxSelected;
+      }
+    } else {
+      this.sliderTwoRef.nativeElement.value = this.max;
+    }
 
     this.fillColor();
   }

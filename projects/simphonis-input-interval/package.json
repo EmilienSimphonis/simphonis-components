@@ -1,6 +1,6 @@
 {
   "name": "simphonis-input-interval",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0"
