@@ -1,6 +1,6 @@
 {
   "name": "simphonis-input-selection",
-  "version": "0.0.21",
+  "version": "0.0.23",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0"
